@@ -19,8 +19,12 @@
     <img src="https://img.shields.io/github/languages/top/beerjoa/idea-nf" alt="GitHub top language" />
   </p>
   <p>
-    <img src="https://img.shields.io/badge/IntelliJIDEA-1f425f?style=flat-square&logo=IntelliJIDEA&logoColor=white" alt="IntelliJ IDEA" />
-    <img src="https://img.shields.io/badge/Bash-121011?style=flat-square&logo=GNUBash&logoColor=white" alt="Bash" />
+    <a href="https://www.jetbrains.com/help/idea/getting-started.html" target="_blank">
+      <img src="https://img.shields.io/badge/IntelliJIDEA-1f425f?style=flat-square&logo=IntelliJIDEA&logoColor=white" alt="IntelliJ IDEA" />
+    </a>
+    <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html" target="_blank">
+      <img src="https://img.shields.io/badge/Bash-121011?style=flat-square&logo=GNUBash&logoColor=white" alt="Bash" />
+    </a>
   </p>
 </div>
 
@@ -32,8 +36,8 @@ Idea-nf is a script that creates the file using CLI in IntelliJ Idea IDE.
 #!/bin/bash
 
 # Open a file in IntelliJ IDEA, creating it if it doesn't exist.
-# Usage: idea-nf <file>
-# Example: idea-nf src/main/java/com/example/MyClass.java
+# Usage: idea-nf "<file>"
+# Example: idea-nf "src/main/java/com/example/MyClass.java"
 
 # Declare the first argument as the target file.
 TARGET_FILE=$1
@@ -65,5 +69,5 @@ $ sudo cp idea-nf.sh /usr/local/bin/idea-nf
 
 # Usage
 ```bash
-$ idea-nf [file name]
+$ idea-nf "[file name]"
 ```
