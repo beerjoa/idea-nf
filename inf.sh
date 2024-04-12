@@ -5,7 +5,13 @@
 # Example: idea-nf src/main/java/com/example/MyClass.java
 
 # Declare the first argument as the target file.
-TARGET_FILE=$1
+TARGET_IDE=$1
+TARGET_FILE=$2
+
+if [ ! -x "/usr/local/bin/$TARGET_IDE" ]; then
+  echo "$TARGET_IDE - IDE could not be found"
+  exit 1
+fi
 
 # Get the directory name to create the file in.
 dir=$(dirname -- "$TARGET_FILE")
@@ -21,5 +27,5 @@ if [ ! -f "$TARGET_FILE" ]; then
 fi
 
 # Open the file in IntelliJ IDEA.
-/usr/local/bin/idea "$TARGET_FILE"
+"$(command -v $TARGET_IDE)" "$TARGET_FILE"
 
