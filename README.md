@@ -31,42 +31,7 @@
 # Introduction
 I(DE)nf is a script that creates the file using CLI in some IDEs.
 
-### inf.sh
-```bash
-#!/bin/bash
-
-# Open a file in your Specified IDE, create the file if it doesn't exist.
-# Usage: inf <ide> "<file>"
-# Example: inf idea "src/main/java/com/example/MyClass.java"
-
-# Declare the first argument as the target IDE.
-TARGET_IDE=$1
-# Declare the second argument as the target file.
-TARGET_FILE=$2
-
-# Check if the target IDE is valid.
-## Currently, we accept IDE installed in "/usr/local/bin" only!
-if [ ! -x "/usr/local/bin/$TARGET_IDE" ]; then
-  echo "$TARGET_IDE - IDE could not be found"
-  exit 1
-fi
-
-# Get the directory name to create the file in.
-dir=$(dirname -- "$TARGET_FILE")
-
-# If the directory doesn't exist, create it.
-if [ ! -d "$dir" ]; then
-  mkdir -p "$dir"
-fi
-
-# If the file doesn't exist, create it.
-if [ ! -f "$TARGET_FILE" ]; then
-  touch "$TARGET_FILE"
-fi
-
-# Open the file in the specified IDE.
-"$(command -v $TARGET_IDE)" "$TARGET_FILE"
-```
+you can check the script details in **[inf.sh](/inf.sh)**
 
 # Installation
 Before installing it, please check that the 'inf' command already exists.
@@ -83,7 +48,7 @@ $ sudo cp inf.sh /usr/local/bin/inf
 # Usage
 ```bash
 # default usage
-$ inf [ide] "[file name]"
+$ inf [ide] "[file]" | "[directory]"
 
 # Also you can use the alias in your shell configuration file. (e.g. .bashrc, .zshrc)
 $ alias infi="inf idea"
