@@ -2,8 +2,8 @@
 
 # Instruction: This script is used to open a file or directory in the specified IDE.
 # It will create the file or directory if it doesn't exist.
-# Usage: inf <ide> "<file>" | inf <ide> "<directory>"
-# Example: inf idea "src/main/java/com/example/MyClass.java" | inf code "src/main/java/com/example"
+# Usage: inf <ide> "<file>" | inf <ide> "<directory>" | inf <ide>
+# Example: inf idea "src/main/java/com/example/MyClass.java" | inf code "src/main/java/com/example" | inf idea
 
 # Declare the first argument as the IDE.
 IDE=$1
@@ -15,6 +15,13 @@ TARGET=$2
 if [ ! -x "/usr/local/bin/$IDE" ]; then
   echo "$IDE - IDE could not be found"
   exit 1
+fi
+
+# Check if the target file or directory is invalid.
+## If the target is empty, open the IDE in the current directory.
+if [ -z "$TARGET" ]; then
+  "$(command -v $IDE)" "./"
+  exit 0
 fi
 
 # Get the directory name to create the file in.
